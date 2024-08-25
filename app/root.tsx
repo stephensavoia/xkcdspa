@@ -17,7 +17,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <h1>xkcd spa</h1>
         {children}
+        <div className="info">
+          xkcd is a webcomic made by Randall Munroe.
+          <br />
+          Visit <a href="https://www.xkcd.com/">xkcd.com</a> for more
+          information.
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>

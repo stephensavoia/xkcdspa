@@ -1,3 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  font-size: 4rem;
+  margin: 0 auto;
+  text-align: center;
+  color: #6e7b91;
+}
+
+.comic-container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 5px 20px;
+}
+.comic-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  max-width: 390px;
+}
+.comic-nav li {
+  display: block;
+  margin: 0px;
+}
+
+.comic-nav li a {
+  background-color: #6e7b91;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1.5px solid #333;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.comic-nav li a:hover {
+  background-color: #5a667a;
+}
+
+h2 {
+  margin: 10px auto;
+  text-align: center;
+  color: #444;
+  font-style: italic;
+}
+
+.comic {
+  margin: 10px auto;
+}
+
+.comic-share-link {
+  display: block;
+  margin: 12px auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1.5px solid #333;
+  color: #444;
+  text-decoration: none;
+  text-align: center;
+  color: #444;
+  font-style: italic;
+  max-width: 390px;
+}
+.comic-share-link:hover {
+  background-color: #f0f0f0;
+}
+.comic-share-link span {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.comic-share-link svg {
+  display: inline-block;
+  width: 1.7rem;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.info {
+  text-align: center;
+  margin: 5px auto 30px auto;
+  color: #444;
+}
+
+.info a {
+  text-decoration: underline;
+}
