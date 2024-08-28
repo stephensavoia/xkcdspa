@@ -1,4 +1,5 @@
 import {
+  ClientLoaderFunctionArgs,
   Links,
   Meta,
   Outlet,
@@ -17,7 +18,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <h1>xkcd spa</h1>
+        <h1>xkcd app</h1>
         {children}
         <div className="info">
           xkcd is a webcomic made by Randall Munroe.

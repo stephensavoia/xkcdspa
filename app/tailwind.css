@@ -36,6 +36,7 @@ h1 {
   font-size: 1.1rem;
   font-weight: bold;
   text-align: center;
+  transition: background-color 0.2s ease;
 }
 
 .comic-nav li a:hover {
@@ -53,9 +54,15 @@ h2 {
   margin: 10px auto;
 }
 
+.comic img {
+  margin: 0 auto;
+  max-width: 100%;
+  min-width: 55%;
+}
+
 .comic-share-link {
   display: block;
-  margin: 12px auto;
+  margin: 14px auto;
   padding: 5px 10px;
   border-radius: 4px;
   border: 1.5px solid #333;
@@ -65,9 +72,10 @@ h2 {
   color: #444;
   font-style: italic;
   max-width: 390px;
+  transition: background-color 0.2s ease;
 }
 .comic-share-link:hover {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
 }
 .comic-share-link span {
   display: inline-block;

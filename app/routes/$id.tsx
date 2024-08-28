@@ -1,12 +1,15 @@
-import { useParams } from "@remix-run/react";
+import { LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { useLoaderData } from "@remix-run/react";
+import { xkcdAPI } from "~/api/xkcdAPI";
+import Comic, { ComicProps } from "~/components/Comic";
 
-export default function VariableRoute() {
-  const { id } = useParams();
+export async function loader({ params }: LoaderFunctionArgs) {
+  const { id } = params;
+  if (id === undefined) throw new Response("Comic ID is undefined");
+  return xkcdAPI(Number(id));
+}
 
-  return (
-    <div>
-      <h1>Dynamic Route</h1>
-      <p>The variable is: {id}</p>
-    </div>
-  );
+export default function ComicById() {
+  const data = useLoaderData<ComicProps>();
+  return <Comic {...data} />;
 }
