@@ -44,6 +44,15 @@ export default function Comic(data: ComicProps) {
     }
   };
 
+  // Some of the xkcd comics are not available in high resolution
+  // so we remove the srcset attribute if the image fails to load
+  const handleError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    const target = event.target as HTMLImageElement;
+    target.srcset = "";
+  };
+
   return (
     <div className="comic-container">
       <NavLinks
@@ -59,6 +68,7 @@ export default function Comic(data: ComicProps) {
           alt={data.alt}
           srcSet={`${imgSrc2x} 2x`}
           style={{ imageOrientation: "none" }}
+          onError={handleError}
         />
       </div>
       <a href="#" className="comic-share-link" onClick={handleShare}>
