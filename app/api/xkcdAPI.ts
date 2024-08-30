@@ -29,18 +29,25 @@ export async function xkcdAPI(comicId: number | null = null) {
     let randomData: ComicData = await randomResponse.json();
 
     if (comicId && comicId !== latestData.num && comicId !== 1) {
-      let currentResponse = await fetch(
-        `https://xkcd.com/${comicId}/info.0.json`
-      );
-      let currentData: ComicData = await currentResponse.json();
-      let prevResponse = await fetch(
-        "https://xkcd.com/" + (comicId - 1) + "/info.0.json"
-      );
-      let prevData: ComicData = await prevResponse.json();
-      let nextResponse = await fetch(
-        "https://xkcd.com/" + (comicId + 1) + "/info.0.json"
-      );
-      let nextData: ComicData = await nextResponse.json();
+      const [currentResponse, prevResponse, nextResponse]: [
+        Response,
+        Response,
+        Response
+      ] = await Promise.all([
+        fetch(`https://xkcd.com/${comicId}/info.0.json`),
+        fetch("https://xkcd.com/" + (comicId - 1) + "/info.0.json"),
+        fetch("https://xkcd.com/" + (comicId + 1) + "/info.0.json"),
+      ]);
+
+      const [currentData, prevData, nextData]: [
+        ComicData,
+        ComicData,
+        ComicData
+      ] = await Promise.all([
+        currentResponse.json() as Promise<ComicData>,
+        prevResponse.json() as Promise<ComicData>,
+        nextResponse.json() as Promise<ComicData>,
+      ]);
 
       return {
         id: currentData.num,
