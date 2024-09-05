@@ -1,4 +1,5 @@
 import { redirect } from "@remix-run/cloudflare";
+import { l } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
 
 interface ComicData {
   num: number;
@@ -55,11 +56,16 @@ export async function xkcdAPI(comicId: number | null = null) {
         img: currentData.img,
         alt: currentData.alt,
         prevLink: `/${prevData.num}`,
+        prevTitle: prevData.title,
         prevImg: prevData.img,
         nextLink: `/${nextData.num}`,
+        nextTitle: nextData.title,
         nextImg: nextData.img,
         randomLink: `/${randomData.num}`,
+        randomTitle: randomData.title,
         randomImg: randomData.img,
+        latestTitle: latestData.title,
+        latestImg: latestData.img,
       };
     } else if (comicId === 1) {
       return {
@@ -68,11 +74,16 @@ export async function xkcdAPI(comicId: number | null = null) {
         img: "https://imgs.xkcd.com/comics/barrel_cropped_(1).jpg",
         alt: "Don't we all.",
         prevLink: "/1",
+        prevTitle: "Barrel - Part 1",
         prevImg: "https://imgs.xkcd.com/comics/barrel_cropped_(1).jpg",
         nextLink: "/2",
+        nextTitle: "Petit Trees (sketch)",
         nextImg: "https://imgs.xkcd.com/comics/tree_cropped_(1).jpg",
         randomLink: `/${randomData.num}`,
+        randomTItle: randomData.title,
         randomImg: randomData.img,
+        latestTitle: latestData.title,
+        latestImg: latestData.img,
       };
     } else {
       let prevResponse = await fetch(
@@ -85,11 +96,16 @@ export async function xkcdAPI(comicId: number | null = null) {
         img: latestData.img,
         alt: latestData.alt,
         prevLink: `/${prevData.num}`,
+        prevTitle: prevData.title,
         prevImg: prevData.img,
         nextLink: `/${latestData.num}`,
+        nextTitle: latestData.title,
         nextImg: latestData.img,
         randomLink: `/${randomData.num}`,
+        randomTitle: randomData.title,
         randomImg: randomData.img,
+        latestTitle: latestData.title,
+        latestImg: latestData.img,
       };
     }
   } catch (error: unknown) {

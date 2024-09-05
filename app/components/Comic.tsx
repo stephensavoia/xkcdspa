@@ -2,25 +2,30 @@ import { useEffect } from "react";
 import NavLinks from "~/components/NavLinks";
 import { preloadImage } from "~/functions/preloadImage";
 
-export type ComicProps = {
+export interface ComicProps {
   id: number;
   title: string;
   img: string;
   alt: string;
   prevLink: string;
+  prevTitle: string;
   prevImg: string;
   nextLink: string;
+  nextTitle: string;
   nextImg: string;
   randomLink: string;
+  randomTitle: string;
   randomImg: string;
-};
+  latestTitle: string;
+  latestImg: string;
+}
 
 export default function Comic(data: ComicProps) {
   useEffect(() => {
     preloadImage(data.prevImg);
     preloadImage(data.nextImg);
     preloadImage(data.randomImg);
-  }, []);
+  }, [data]);
 
   const imgSrc = data.img;
   const imgSrc2x = imgSrc ? imgSrc.replace(/(\.[\w\d_-]+)$/i, "_2x$1") : "";
